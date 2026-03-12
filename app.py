@@ -4,11 +4,11 @@ import pickle
 
 app = Flask(__name__)
 
-diabetes_model = pickle.load(open("D:\Project\Disease Prediction\models\diabetes.pkl","rb"))
-heart_model = pickle.load(open("D:\Project\Disease Prediction\models\heart.pkl","rb"))
-kidney_model = pickle.load(open("D:\Project\Disease Prediction\models\kidney.pkl","rb"))
-liver_model = pickle.load(open("D:\Project\Disease Prediction\models\liver.pkl","rb"))
-lung_model = pickle.load(open("D:\Project\Disease Prediction\models\lung_cancer.pkl","rb"))
+diabetes_model = pickle.load(open("diabetes.pkl","rb"))
+heart_model = pickle.load(open("heart.pkl","rb"))
+kidney_model = pickle.load(open("kidney.pkl","rb"))
+liver_model = pickle.load(open("liver.pkl","rb"))
+lung_model = pickle.load(open("lung_cancer.pkl","rb"))
 
 
 # HOME =================
