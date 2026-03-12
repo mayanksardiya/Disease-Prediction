@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Disease Prediction System</title>
+
+<style>
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family: "Segoe UI", sans-serif;
+}
+
+/* Background */
+
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+
+background:
+linear-gradient(rgba(3,7,18,0.85),rgba(3,7,18,0.95)),
+url("https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=2000&q=80");
+
+background-size:cover;
+background-position:center;
+color:#e5e7eb;
+}
+
+/* Layout */
+
+.shell{
+width:95%;
+max-width:1200px;
+display:grid;
+grid-template-columns:1.6fr 1fr;
+gap:25px;
+padding:20px;
+}
+
+@media(max-width:900px){
+.shell{
+grid-template-columns:1fr;
+}
+}
+
+/* Panels */
+
+.panel{
+background:rgba(15,23,42,0.7);
+backdrop-filter:blur(15px);
+border-radius:20px;
+border:1px solid rgba(148,163,184,0.25);
+padding:25px;
+box-shadow:0 20px 60px rgba(0,0,0,0.6);
+}
+
+/* Title */
+
+.title{
+font-size:26px;
+font-weight:600;
+margin-bottom:5px;
+}
+
+.subtitle{
+font-size:14px;
+color:#9ca3af;
+margin-bottom:15px;
+}
+
+/* Badge */
+
+.badge{
+display:inline-block;
+padding:5px 12px;
+border-radius:999px;
+background:rgba(34,197,94,0.15);
+border:1px solid rgba(34,197,94,0.6);
+color:#bbf7d0;
+font-size:12px;
+margin-bottom:10px;
+}
+
+/* Grid */
+
+.grid{
+margin-top:15px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:15px;
+}
+
+@media(max-width:600px){
+.grid{
+grid-template-columns:1fr;
+}
+}
+
+/* Cards */
+
+.card{
+background:rgba(15,23,42,0.85);
+border-radius:16px;
+padding:16px;
+border:1px solid rgba(148,163,184,0.3);
+cursor:pointer;
+transition:0.2s;
+text-decoration:none;
+color:white;
+}
+
+.card:hover{
+transform:translateY(-4px);
+border-color:#22c55e;
+box-shadow:0 15px 35px rgba(0,0,0,0.7);
+}
+
+.card-title{
+font-size:16px;
+font-weight:600;
+margin-bottom:5px;
+}
+
+.card-tag{
+font-size:11px;
+padding:3px 8px;
+border-radius:999px;
+background:rgba(34,197,94,0.15);
+border:1px solid rgba(34,197,94,0.6);
+color:#bbf7d0;
+}
+
+.card-body{
+font-size:12px;
+color:#9ca3af;
+margin-top:6px;
+}
+
+/* Right section */
+
+.prediction-card{
+background:rgba(15,23,42,0.8);
+padding:18px;
+border-radius:16px;
+border:1px solid rgba(34,197,94,0.5);
+margin-top:15px;
+}
+
+.prediction-label{
+font-size:12px;
+text-transform:uppercase;
+letter-spacing:1px;
+color:#86efac;
+}
+
+.prediction-value{
+font-size:20px;
+margin-top:5px;
+font-weight:600;
+}
+
+.prediction-extra{
+font-size:12px;
+color:#9ca3af;
+margin-top:5px;
+}
+
+/* Pills */
+
+.pill-row{
+margin-top:10px;
+display:flex;
+flex-wrap:wrap;
+gap:6px;
+}
+
+.pill{
+font-size:11px;
+padding:4px 10px;
+border-radius:999px;
+border:1px solid rgba(148,163,184,0.4);
+color:#9ca3af;
+}
+
+.pill-good{
+border-color:#22c55e;
+color:#bbf7d0;
+background:rgba(34,197,94,0.15);
+}
+
+/* Disclaimer */
+
+.disclaimer{
+margin-top:12px;
+font-size:11px;
+color:#9ca3af;
+}
+
+</style>
+</head>
+
+<body>
+
+<div class="shell">
+
+<!-- LEFT PANEL -->
+
+<div class="panel">
+
+<div class="title">Disease Prediction</div>
+
+<p class="subtitle">
+Select a disease prediction tool below to estimate risk using machine learning models.
+</p>
+
+<div class="grid">
+
+<a href="/diabetes" class="card">
+<div class="card-title">Diabetes</div>
+<span class="card-tag">Metabolic</span>
+<div class="card-body">
+Predict diabetes risk using glucose, BMI and age.
+</div>
+</a>
+
+<a href="/heart" class="card">
+<div class="card-title">Heart Disease</div>
+<span class="card-tag">Cardiology</span>
+<div class="card-body">
+Assess heart risk using BP, cholesterol and symptoms.
+</div>
+</a>
+
+<a href="/kidney" class="card">
+<div class="card-title">Kidney Disease</div>
+<span class="card-tag">Renal</span>
+<div class="card-body">
+Detect CKD risk using urea, creatinine and glucose.
+</div>
+</a>
+
+<a href="/liver" class="card">
+<div class="card-title">Liver Disease</div>
+<span class="card-tag">Hepatic</span>
+<div class="card-body">
+Evaluate liver health using bilirubin and enzymes.
+</div>
+</a>
+
+<a href="/lung_cancer" class="card">
+<div class="card-title">Lung Disease</div>
+<span class="card-tag">Oncology</span>
+<div class="card-body">
+Predict lung cancer risk based on symptoms and lifestyle.
+</div>
+</a>
+
+<a href="/contact_doctor" class="card">
+<div class="card-title">Contact a Doctor</div>
+<span class="card-tag">Recommendation</span>
+<div class="card-body">
+Describe your condition and get a suggested specialist to consult.
+</div>
+</a>
+
+</div>
+
+</div>
+
+<!-- RIGHT PANEL -->
+
+<div class="panel">
+
+<div class="title">How to Use</div>
+
+<p class="subtitle">
+Choose a disease from the dashboard to open its prediction tool.
+Enter clinical values to estimate risk.
+</p>
+
+<div class="prediction-card">
+
+<div class="prediction-label">Platform Overview</div>
+
+<div class="prediction-value">
+AI-Powered Health Screening
+</div>
+
+<div class="prediction-extra">
+Multiple machine learning models help estimate disease risk for early awareness.
+</div>
+
+<div class="pill-row">
+<span class="pill pill-good">5 Disease Models</span>
+<span class="pill">Fast Prediction</span>
+<span class="pill">ML Powered</span>
+</div>
+
+<div class="disclaimer">
+⚠ This system provides screening assistance only and should not replace professional medical advice.
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</body>
+</html>

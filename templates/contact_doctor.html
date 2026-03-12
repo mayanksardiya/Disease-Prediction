@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Contact Doctor</title>
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:"Segoe UI",system-ui;
+}
+body{
+min-height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+background:
+linear-gradient(rgba(3,7,18,0.85),rgba(3,7,18,0.95)),
+url("https://images.unsplash.com/photo-1579684385127-1ef15d508118?auto=format&fit=crop&w=2000&q=80");
+background-size:cover;
+background-position:center;
+color:#e5e7eb;
+}
+.shell{
+width:95%;
+max-width:900px;
+background:rgba(15,23,42,0.8);
+backdrop-filter:blur(16px);
+border-radius:20px;
+border:1px solid rgba(148,163,184,0.35);
+padding:24px;
+box-shadow:0 22px 60px rgba(0,0,0,0.7);
+}
+.nav-back a{
+font-size:12px;
+color:#a5b4fc;
+text-decoration:none;
+}
+.title{
+font-size:24px;
+font-weight:600;
+margin-top:8px;
+}
+.subtitle{
+font-size:13px;
+color:#9ca3af;
+margin-top:4px;
+}
+form{
+margin-top:18px;
+display:flex;
+flex-direction:column;
+gap:12px;
+}
+label{
+font-size:12px;
+color:#9ca3af;
+}
+textarea{
+width:100%;
+min-height:120px;
+padding:10px 12px;
+border-radius:14px;
+border:1px solid rgba(148,163,184,0.5);
+background:rgba(15,23,42,0.95);
+color:white;
+font-size:13px;
+resize:vertical;
+}
+textarea:focus{
+outline:none;
+border-color:#22c55e;
+box-shadow:0 0 0 2px rgba(34,197,94,0.35);
+}
+button{
+align-self:flex-start;
+margin-top:4px;
+padding:9px 18px;
+border-radius:999px;
+border:none;
+background:linear-gradient(135deg,#22c55e,#4ade80);
+color:#022c22;
+font-weight:600;
+cursor:pointer;
+box-shadow:0 12px 30px rgba(34,197,94,0.55);
+transition:0.15s;
+}
+button:hover{
+transform:translateY(-2px);
+box-shadow:0 18px 40px rgba(34,197,94,0.7);
+}
+.result-card{
+margin-top:18px;
+padding:16px;
+border-radius:16px;
+background:radial-gradient(circle at top left,rgba(34,197,94,0.18),rgba(15,23,42,0.98));
+border:1px solid rgba(34,197,94,0.6);
+}
+.result-title{
+font-size:13px;
+text-transform:uppercase;
+letter-spacing:1px;
+color:#bbf7d0;
+}
+.result-text{
+margin-top:6px;
+font-size:15px;
+font-weight:500;
+}
+.result-note{
+margin-top:6px;
+font-size:12px;
+color:#9ca3af;
+}
+.doctor-list-title{
+margin-top:12px;
+font-size:13px;
+font-weight:500;
+}
+.doctor-list{
+margin-top:6px;
+display:grid;
+grid-template-columns:1fr 1fr;
+gap:10px;
+}
+@media(max-width:700px){
+.doctor-list{
+grid-template-columns:1fr;
+}
+}
+.doctor-card{
+padding:10px 12px;
+border-radius:12px;
+border:1px solid rgba(148,163,184,0.5);
+background:rgba(15,23,42,0.9);
+font-size:12px;
+}
+.doctor-name{
+font-weight:600;
+}
+.doctor-role{
+color:#9ca3af;
+margin-top:2px;
+}
+.doctor-meta{
+color:#9ca3af;
+margin-top:2px;
+}
+</style>
+</head>
+<body>
+<div class="shell">
+<div class="nav-back">
+<a href="/">← Back to home</a>
+</div>
+<div class="title">Contact a Doctor</div>
+<p class="subtitle">
+Describe your symptoms or known disease. We will suggest the most suitable type of doctor to consult.
+</p>
+<form method="post">
+<div>
+<label for="description">Describe your condition</label>
+<textarea id="description" name="description" placeholder="Example: I have long-term diabetes and recently developed swelling in my legs..." required></textarea>
+</div>
+<button type="submit">Get Doctor Recommendation →</button>
+</form>
+{% if recommendation %}
+<div class="result-card">
+<div class="result-title">Recommended Specialist</div>
+<div class="result-text">
+{{ recommendation }}
+</div>
+{% if notes %}
+<div class="result-note">
+{{ notes }}
+</div>
+{% endif %}
+{% if doctors %}
+<div class="doctor-list-title">Example doctors you can look for</div>
+<div class="doctor-list">
+{% for doc in doctors %}
+<div class="doctor-card">
+<div class="doctor-name">{{ doc.name }}</div>
+<div class="doctor-role">{{ doc.role }}</div>
+<div class="doctor-meta">{{ doc.hospital }} · {{ doc.city }}</div>
+</div>
+{% endfor %}
+</div>
+{% endif %}
+</div>
+{% endif %}
+</div>
+</body>
+</html>
